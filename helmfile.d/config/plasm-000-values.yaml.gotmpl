@@ -1,10 +1,10 @@
-name: plasm
+name: W3F-000
 deploymentName: plasm-000
 p2pPort: 30101
 chainspec:
   custom: false
   preset: true
-  name: kusama
+  name: ""
 validator: true
 keys:
   session_grandpa: {{ env "PLASM_KEYS_0_SESSION_GRANDPA_SEED" | default "" | quote }}
@@ -12,14 +12,18 @@ keys:
   session_imonline: {{ env "PLASM_DEPLOYER_KEYS_0_SESSION_IMONLINE_SEED" | default "" | quote }}
   session_parachain: {{ env "PLASM_DEPLOYER_KEYS_0_SESSION_PARACHAIN_SEED" | default "" | quote }}
 extraBootnodes: []
-persistence:
-  enabled: true
 image:
   repo: web3f/plasm
   tag: v0.1.0
+extraArgs:
+  validator: "--in-peers 100 --out-peers 100"
+{{ if eq .Environment.Name "ci" }}
+local: true
+{{ else }}
+persistence:
+  enabled: true
 resources:
   requests:
     memory: "4.5Gi"
     cpu: "1"
-extraArgs:
-  validator: "--in-peers 100 --out-peers 100"
+{{ end }}
