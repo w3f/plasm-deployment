@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 RUN apt update && \
   apt install -y --no-install-recommends ca-certificates wget && \
-  wget https://github.com/w3f/plasm/releases/download/v0.5.0/plasm-node -O /usr/local/bin/polkadot  && \
+  wget https://github.com/w3f/plasm/releases/download/v0.7.0/plasm-node -O /usr/local/bin/polkadot  && \
   chmod a+x /usr/local/bin/polkadot && \
   mv /usr/share/ca* /tmp && \
 	rm -rf /usr/share/*  && \
