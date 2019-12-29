@@ -9,11 +9,11 @@ repositories:
 releases:
 - name: plasm-000
   chart: w3f/polkadot
-  version: v0.14.3
+  version: v0.16.2
   values:
   - ./config/plasm-000-values.yaml.gotmpl
 - name: plasm-base-services
   chart: w3f/polkadot-base-services
-  version: v0.14.3
+  version: v0.16.2
   values:
   - ./config/plasm-base-services-values.yaml.gotmpl
