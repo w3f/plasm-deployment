@@ -14,7 +14,11 @@ keys:
 extraBootnodes: []
 image:
   repo: web3f/plasm
-  tag: v0.7.0
+{{ if eq .Environment.Name "ci" }}
+  tag: {{ env "CIRCLE_SHA1" | quote }}
+{{ else }}
+  tag: {{ env "CIRCLE_TAG" | quote }}
+{{ end }}
 extraArgs:
   validator: "--in-peers 100 --out-peers 100"
 {{ if eq .Environment.Name "ci" }}
